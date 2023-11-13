@@ -1,43 +1,24 @@
 
-g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¢…ŞÓ»1
-g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¢…ŞÓ»1
-c
-java:S2095À"EUse try-with-resources or close this "Scanner" in a "finally" clause.(šµ€±8æ·ŞÓ»1
-z	java:S116!"_Rename this field "MIN_TOTAL_CHARACTERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(… áj8ä…ŞÓ»1
-	java:S116""`Rename this field "MIN_NUMBER_CHARACTERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦·éûÿÿÿÿ8ä…ŞÓ»1
-‚	java:S116#"aRename this field "MIN_SPECIAL_CHARACTERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ†¢–şÿÿÿÿ8ä…ŞÓ»1
-	java:S116$"`Rename this field "AMOUNT_OF_SUGGESTIONS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤İŠğÿÿÿÿÿ8ä…ŞÓ»1
-z	java:S116%"_Rename this field "DEFAULT_FILE_CONTENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ÅÑ8ä…ŞÓ»1
-~	java:S116'"bRename this field "EASY_SPECIAL_CHARACTERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š¼¡î8ä…ŞÓ»1
-=
-java:S1170!"!Make this final field static too.(… áj8ä…ŞÓ»1
-C
-java:S1170""!Make this final field static too.(¦·éûÿÿÿÿ8ä…ŞÓ»1
-C
-java:S1170#"!Make this final field static too.(Ğ†¢–şÿÿÿÿ8ä…ŞÓ»1
-C
-java:S1170$"!Make this final field static too.(¤İŠğÿÿÿÿÿ8ä…ŞÓ»1
-=
-java:S1170%"!Make this final field static too.(¦ÅÑ8ä…ŞÓ»1
->
-java:S1170'"!Make this final field static too.(š¼¡î8ä…ŞÓ»1
-o
-java:S3776/"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(“–ış8÷…ŞÓ»1
-G	java:S1063"+Replace this use of System.out by a logger.(¡´Å8ù…ŞÓ»1
-G	java:S1065"+Replace this use of System.out by a logger.(¡´Å8ù…ŞÓ»1
-G	java:S1068"+Replace this use of System.out by a logger.(“˜ç€8ú…ŞÓ»1
-L	java:S106;"+Replace this use of System.out by a logger.(‹Úşşÿÿÿÿ8û…ŞÓ»1
-J
-java:S1481@"-Remove this unused "userHome" local variable.(ÛÑ÷”8û…ŞÓ»1
-L	java:S106G"+Replace this use of System.out by a logger.(É¸¦ûÿÿÿÿ8ı…ŞÓ»1
-L	java:S106R"+Replace this use of System.out by a logger.(£±ÉÆûÿÿÿÿ8ÿ…ŞÓ»1
-L	java:S106j"+Replace this use of System.out by a logger.(ê…œÆûÿÿÿÿ8‚†ŞÓ»1
+X	java:S1254"<This block of commented-out lines of code should be removed.(ê†¨ï8ÎæœË¼1
+L	java:S1067"+Replace this use of System.out by a logger.(‹Úşşÿÿÿÿ8ĞæœË¼1
+L	java:S106;"+Replace this use of System.out by a logger.(‹Úşşÿÿÿÿ8ĞæœË¼1
+]	java:S125J"<This block of commented-out lines of code should be removed.(ÏçêÃùÿÿÿÿ8ÒæœË¼1
 ;
-java:S2119œ"Save and re-use this "Random".(¼İÅf8…âàÓ»1
+java:S2119„"Save and re-use this "Random".(¼İÅf8ØæœË¼1
 ;
-java:S2119¶"Save and re-use this "Random".(¼İÅf8ŠâàÓ»1
-X
-java:S4719Ç":Replace Charset.forName() call with StandardCharsets.UTF_8(¬«ñÇ8âàÓ»1
-]
-java:S4719É":Replace Charset.forName() call with StandardCharsets.UTF_8(Ïœãæÿÿÿÿÿ8âàÓ»1
-H	java:S106×"+Replace this use of System.out by a logger.(±¤ª¹8’âàÓ»1
+java:S2119¦"Save and re-use this "Random".(¼İÅf8ÛæœË¼1
+H	java:S106µ"+Replace this use of System.out by a logger.(…†˜8İæœË¼1
+\
+java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8ŞæœË¼1
+[
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ8ŞæœË¼1
+S
+java:S1128	"1Remove this unused import 'java.text.Normalizer'.(‡âÌ€øÿÿÿÿ8ŞæœË¼1
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8ŞæœË¼1
+R
+java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8ŞæœË¼1
+O
+java:S1068"-Remove this unused "inputFile" private field.(¨†Ùûÿÿÿÿ8ŞæœË¼1
+M
+java:S1068"0Remove this unused "relativePath" private field.(¯åÕÖ8ŞæœË¼1
