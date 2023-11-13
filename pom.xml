@@ -11,7 +11,7 @@
         <repository>
             <id>maven-central</id>
             <name>maven-central</name>
-            <url>http://https://repo.maven.apache.org/maven2/</url>
+            <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
     </repositories>
 
@@ -29,5 +29,32 @@
             <version>4.7.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Add the maven-shade-plugin for creating an uber-jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version> <!-- Use the latest version available -->
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>passwordcreator.application.PasswordCreatorMainCommand</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
