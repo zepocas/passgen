@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
     description = "calls main function"
 )
 public class PasswordCreatorMainCommand implements Runnable {
-
     private File inputFile;
     private final String relativePath = System.getProperty("user.home") + File.separator + ".passgen-wordbowl.txt";
     @CommandLine.Parameters(index = "0", description = "Input string")
@@ -40,6 +39,9 @@ public class PasswordCreatorMainCommand implements Runnable {
         int exitCode = new CommandLine(new PasswordCreatorMainCommand()).execute(args);
         System.exit(exitCode);
     }
+
+    // TODO: 13/11/2023 implementar get random word a uma API publica: GET https://api.dicionario-aberto.net/random
+    // TODO: 13/11/2023 implementar get palavra próxima de outra a uma API publica: GET https://api.dicionario-aberto.net/near/{word}
 
     @Override
     public void run() {
