@@ -1,79 +1,31 @@
-package passwordcreator.application;
+package passgen.application;
 
-import picocli.CommandLine;
-import picocli.CommandLine.Command;
+import lombok.AllArgsConstructor;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.nio.charset.StandardCharsets;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-@Command(
-    name = "passgen",
-    description = "calls main function"
-)
-public class PasswordCreatorMainCommand implements Runnable {
-    private File inputFile;
-    private final String relativePath = System.getProperty("user.home") + File.separator + ".passgen-wordbowl.txt";
-    @CommandLine.Parameters(index = "0", description = "Input string")
-    private String inputString;
-    @CommandLine.Parameters(index = "1", description = "desired amount of special characters", arity = "0..1")
-    private int amountSpecialChars;
+@AllArgsConstructor
+public class Generator {
     private static final int MIN_TOTAL_CHARACTERS = 12;
     private static final int MIN_NUMBER_CHARACTERS = 2;
     private static final int MIN_SPECIAL_CHARACTERS = 1;
-    private static final int AMOUNT_OF_SUGGESTIONS = 30;
     private static final String EASY_SPECIAL_CHARACTERS = "!\"$%&*()_-+=|\\/?#@[]{}";
 
-    public static void main(String[] args) {
-        int exitCode = new CommandLine(new PasswordCreatorMainCommand()).execute(args);
-        System.exit(exitCode);
-    }
-
-    // TODO: 13/11/2023 implementar get random word a uma API publica: GET https://api.dicionario-aberto.net/random
-    // TODO: 13/11/2023 implementar get palavra próxima de outra a uma API publica: GET https://api.dicionario-aberto.net/near/{word}
-
-    @Override
-    public void run() {
-        if (inputString != null) {
-            // Use the provided input string
-            List<String> wordsArray = new ArrayList<>(List.of(inputString.split(" ")));
-            wordsArray.removeIf(word -> word.length() < 4);
-
-            if (wordsArray.size() >= 3) {
-                //System.out.println("Using the input string: " + inputString);
-                printList(generate(List.of(inputString.split(" ")), AMOUNT_OF_SUGGESTIONS));
-            } else {
-                System.out.println("Invalid input string. Give more words");
-            }
-
-        } else {
-            System.out.println("Invalid input string. Give more words");
-        }
-
-    }
-
-    private List<String> generate(List<String> wordBowl, int amountOfSuggestions) {
+    public List<String> generate(String inputString, int amountOfSuggestions, Integer amountSpecialChars) {
+        List<String> wordBowl = List.of(inputString.split(" "));
         List<String> suggestedPasswords = new ArrayList<>();
         List<String> existingSpecialCharsList = wordBowl.stream()
-                                                .filter(s -> s.length() == 1 && EASY_SPECIAL_CHARACTERS.contains(s))
-                                                .collect(Collectors.toList());
+                                                        .filter(s -> s.length() == 1 && EASY_SPECIAL_CHARACTERS.contains(s))
+                                                        .collect(Collectors.toList());
 
         List<String> validWords = wordBowl.stream()
                                           .filter(this::notContainsDigits)
                                           .collect(Collectors.toList());
-
-        //System.out.println("validWords = " + validWords);
 
         if (validWords.size() < 3) {
             throw new IllegalArgumentException("Insufficient valid words in the word bowl.");
@@ -92,7 +44,7 @@ public class PasswordCreatorMainCommand implements Runnable {
             String uppercaseWord = mutableValidWords.get(1).toUpperCase();
 
             if (existingSpecialCharsList.isEmpty()) {
-                specialCharsList = generateSpecialCharacters();
+                specialCharsList = generateSpecialCharacters(amountSpecialChars);
             } else {
                 specialCharsList = new ArrayList<>(existingSpecialCharsList);
             }
@@ -154,11 +106,11 @@ public class PasswordCreatorMainCommand implements Runnable {
         return digits;
     }
 
-    private List<String> generateSpecialCharacters() {
+    private List<String> generateSpecialCharacters(Integer amountSpecialChars) {
         List<String> charList = new ArrayList<>();
         int targetAmount;
 
-        if (amountSpecialChars > MIN_SPECIAL_CHARACTERS) {
+        if (amountSpecialChars != null && amountSpecialChars > MIN_SPECIAL_CHARACTERS) {
             targetAmount = amountSpecialChars;
         } else {
             targetAmount = MIN_SPECIAL_CHARACTERS;
@@ -175,12 +127,5 @@ public class PasswordCreatorMainCommand implements Runnable {
 
     private boolean notContainsDigits(String input) {
         return !input.matches(".*\\d.*");
-    }
-
-    private void printList(List<String> list) {
-        if (list != null && !list.isEmpty()) {
-            list.sort(Comparator.comparingInt(String::length).reversed());
-            list.forEach(string -> System.out.println(string + " - length: " + string.length()));
-        }
     }
 }

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>password_creator</groupId>
-    <artifactId>password_creator_cli</artifactId>
+    <artifactId>passgen</artifactId>
     <version>1.0-SNAPSHOT</version>
     <repositories>
         <repository>
@@ -28,6 +28,23 @@
             <artifactId>picocli</artifactId>
             <version>4.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version> <!-- Use the latest version available -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -46,7 +63,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>passwordcreator.application.PasswordCreatorMainCommand</mainClass>
+                                    <mainClass>passgen.application.PassGenMainCommand</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
